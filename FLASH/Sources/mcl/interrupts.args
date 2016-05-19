@@ -1,0 +1,26 @@
+-mcpu=cortex-m0
+-mthumb
+-mfloat-abi=soft
+-g3
+-gdwarf-2
+-gstrict-dwarf
+-I"E:/Proyectos/Conti/Practica05/Project_Headers"
+-I"E:/Proyectos/Conti/Practica05/Sources/app"
+-I"E:/Proyectos/Conti/Practica05/Sources/mcl"
+-I"E:/Proyectos/Conti/Practica05/Sources/gsc_scheduler/gsc_sch_core"
+-I"E:/Proyectos/Conti/Practica05/Sources/gsc_scheduler/periodic_tasks"
+-I"E:/Proyectos/Conti/Practica05/Sources/app"
+-I"E:/Proyectos/Conti/Practica05/Project_Settings/Startup_Code"
+-I"C:/Freescale/CW MCU v10.6.4/MCU/ARM_GCC_Support/ewl/EWL_C/include"
+-I"C:/Freescale/CW MCU v10.6.4/MCU/ARM_GCC_Support/ewl/EWL_Runtime/include"
+-O1
+-fpack-struct
+-fshort-enums
+-ffunction-sections
+-fdata-sections
+-Wall
+-funsigned-bitfields
+-v
+-c
+-fmessage-length=0
+-specs=ewl_c.specs

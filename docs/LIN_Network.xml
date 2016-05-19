@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<LIN_network>
+	<nodes>
+		<master_node name="MASTER"/>
+		<slave_node name="SLAVE1"/>
+		<slave_node name="SLAVE2"/>
+		<slave_node name="SLAVE3"/>
+		<slave_node name="SLAVE4"/>
+	</nodes>
+	<messages>
+		<message ID="CF" MsgName="MASTER_CMD_ALL" MsgDataLen="1" MsgType="MASTER" MsgPublisher="SLAVE1, SLAVE2, SLAVE3, SLAVE4" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="50" MsgName="MASTER_CMD_SLV1" MsgDataLen="1" MsgType="MASTER" MsgPublisher="SLAVE1" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="11" MsgName="MASTER_CMD_SLV2" MsgDataLen="1" MsgType="MASTER" MsgPublisher="SLAVE2" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="92" MsgName="MASTER_CMD_SLV3" MsgDataLen="1" MsgType="MASTER" MsgPublisher="SLAVE3" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="D3" MsgName="MASTER_CMD_SLV4" MsgDataLen="1" MsgType="MASTER" MsgPublisher="SLAVE4" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="20" MsgName="SLAVE1_RSP" MsgDataLen="2" MsgType="SLAVE1" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="61" MsgName="SLAVE2_RSP" MsgDataLen="2" MsgType="SLAVE2" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="E2" MsgName="SLAVE3_RSP" MsgDataLen="2" MsgType="SLAVE3" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="A3" MsgName="SLAVE4_RSP" MsgDataLen="2" MsgType="SLAVE4" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="F0" MsgName="SLAVE1_ID" MsgDataLen="7" MsgType="SLAVE1" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="B1" MsgName="SLAVE2_ID" MsgDataLen="7" MsgType="SLAVE2" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="32" MsgName="SLAVE3_ID" MsgDataLen="7" MsgType="SLAVE3" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+		<message ID="73" MsgName="SLAVE4_ID" MsgDataLen="7" MsgType="SLAVE4" MsgPublisher="MASTER" MsgSubscribers="auto" MsgCallback="" MsgDescription=""/>
+	</messages>
+	<signal_types>
+		<type TypeName="t_slv_stat">
+			<enum_value EnumVal="ENABLED"/>
+			<enum_value EnumVal="DISABLED"/>
+		</type>
+		<type TypeName="t_cmdType">
+			<enum_value EnumVal="cmd_NONE"/>
+			<enum_value EnumVal="cmd_LED_on"/>
+			<enum_value EnumVal="cmd_LED_off"/>
+			<enum_value EnumVal="cmd_LED_toggling"/>
+			<enum_value EnumVal="cmd_disable_slv"/>
+			<enum_value EnumVal="cmd_enable_slv"/>
+		</type>
+		<type TypeName="t_LEDstat">
+			<enum_value EnumVal="ON"/>
+			<enum_value EnumVal="OFF"/>
+			<enum_value EnumVal="TOGGLING"/>
+		</type>
+		<type TypeName="t_target_active">
+			<enum_value EnumVal="ACTIVE"/>
+			<enum_value EnumVal="INACTIVE"/>
+		</type>
+		<type TypeName="t_boolean">
+			<enum_value EnumVal="TRUE"/>
+			<enum_value EnumVal="FALSE"/>
+		</type>
+	</signal_types>
+	<signals>
+		<signal SigName="master_cmdForAll" SigMsg="MASTER_CMD_ALL" SigStartByte="0" SigStartBit="0" SigLen="4" SigType="t_cmdType" SigEndian="LE" SigDescription=""/>
+		<signal SigName="master_cmdForSlave1" SigMsg="MASTER_CMD_SLV1" SigStartByte="0" SigStartBit="0" SigLen="4" SigType="t_cmdType" SigEndian="LE" SigDescription=""/>
+		<signal SigName="master_cmdForSlave2" SigMsg="MASTER_CMD_SLV2" SigStartByte="0" SigStartBit="0" SigLen="4" SigType="t_cmdType" SigEndian="LE" SigDescription=""/>
+		<signal SigName="master_cmdForSlave3" SigMsg="MASTER_CMD_SLV3" SigStartByte="0" SigStartBit="0" SigLen="4" SigType="t_cmdType" SigEndian="LE" SigDescription=""/>
+		<signal SigName="master_cmdForSlave4" SigMsg="MASTER_CMD_SLV4" SigStartByte="0" SigStartBit="0" SigLen="4" SigType="t_cmdType" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave1_LEDstat" SigMsg="SLAVE1_RSP" SigStartByte="0" SigStartBit="0" SigLen="2" SigType="t_LEDstat" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave1_enabled" SigMsg="SLAVE1_RSP" SigStartByte="1" SigStartBit="0" SigLen="1" SigType="t_boolean" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave1_supplier" SigMsg="SLAVE1_ID" SigStartByte="0" SigStartBit="0" SigLen="8" SigType="scalar" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave1_serial" SigMsg="SLAVE1_ID" SigStartByte="1" SigStartBit="0" SigLen="48" SigType="array" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave2_LEDstat" SigMsg="SLAVE2_RSP" SigStartByte="0" SigStartBit="0" SigLen="2" SigType="t_LEDstat" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave2_enabled" SigMsg="SLAVE2_RSP" SigStartByte="1" SigStartBit="0" SigLen="1" SigType="t_boolean" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave2_supplier" SigMsg="SLAVE2_ID" SigStartByte="0" SigStartBit="0" SigLen="8" SigType="scalar" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave2_serial" SigMsg="SLAVE2_ID" SigStartByte="1" SigStartBit="0" SigLen="48" SigType="array" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave3_LEDstat" SigMsg="SLAVE3_RSP" SigStartByte="0" SigStartBit="0" SigLen="2" SigType="t_LEDstat" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave3_enabled" SigMsg="SLAVE3_RSP" SigStartByte="1" SigStartBit="0" SigLen="1" SigType="t_boolean" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave3_supplier" SigMsg="SLAVE3_ID" SigStartByte="0" SigStartBit="0" SigLen="8" SigType="scalar" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave3_serial" SigMsg="SLAVE3_ID" SigStartByte="1" SigStartBit="0" SigLen="48" SigType="array" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave4_LEDstat" SigMsg="SLAVE4_RSP" SigStartByte="0" SigStartBit="0" SigLen="2" SigType="t_LEDstat" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave4_enabled" SigMsg="SLAVE4_RSP" SigStartByte="1" SigStartBit="0" SigLen="1" SigType="t_boolean" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave4_supplier" SigMsg="SLAVE4_ID" SigStartByte="0" SigStartBit="0" SigLen="8" SigType="scalar" SigEndian="LE" SigDescription=""/>
+		<signal SigName="slave4_serial" SigMsg="SLAVE4_ID" SigStartByte="1" SigStartBit="0" SigLen="48" SigType="array" SigEndian="LE" SigDescription=""/>
+	</signals>
+	<sched_tables>
+		<sched_table SchTblName="sched_SlvIDs" SchInterrupt="No">
+			<slot SlotMsg=""/>
+			<slot SlotSizeTick="SLAVE1_ID"/>
+		</sched_table>
+		<sched_table SchTblName="sched_SlvCmdAndStats" SchInterrupt="Yes">
+			<slot SlotMsg=""/>
+			<slot SlotSizeTick="MASTER_CMD_SLV1"/>
+		</sched_table>
+		<sched_table SchTblName="sched_AllCmd" SchInterrupt="No">
+			<slot SlotMsg=""/>
+			<slot SlotSizeTick="MASTER_CMD_ALL"/>
+		</sched_table>
+		<sched_table SchTblName="sched_testing" SchInterrupt="No">
+			<slot SlotMsg=""/>
+			<slot SlotSizeTick="SLAVE1_ID"/>
+		</sched_table>
+	</sched_tables>
+	<setup BaseTick_ms="10" BrakeSize_bits="13" Host_micro_endianess="LE" TX_buffer="Single" RX_buffer="Single" TX_msg_API_prefix="" TX_msg_API_suffix="" RX_msg_API_prefix="" RX_msg_API_suffix="" TX_sig_API_prefix="" TX_sig_API_suffix="" RX_sig_API_prefix="" RX_sig_API_suffix="" RX_Msg_Callbacks="" RX_Msg_Flags="" TX_Msg_Function="" TX_Msg_Flags=""/>
+</LIN_network>
